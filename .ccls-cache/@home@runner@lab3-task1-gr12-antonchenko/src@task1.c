@@ -1,47 +1,36 @@
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
+#include <time.h>
 
+// counting digit sum of an integer
 int digit_sum(int arg) {
-  if (arg <= 0) {
+  if (arg <= 0) { // check if argument is greater than 0
     return -1;
-  } 
-  char buffer[50]; //size of the number
+  }
+  
+  char buffer[50]; // length of integer
   sprintf(buffer, "%i", arg);
-  int sum = 0;
+  int sum = 0; // sum counter
   for (int i = 0; i < 50; i++) {
     if (isdigit(buffer[i])) {
-      sum += (int)buffer[i] - 48;
+      sum += (int)buffer[i] - 48; // counting integer value of digit
     }
   }
+  
   return sum;
 }
 
-
-int main() {
-  int n;
-  int max_sum = 0, cur_sum = 0;
-  printf("Enter a size of array: ");
-  if (!scanf("%i", &n)) {
-    printf("Number must be integer");
-    return -1;
-  }
+// find max digit sum of randomly generated array
+void max_digit_sum(int n) {
+  srand(time(NULL)); // randomizing subsequent number generation
   
-  if (n <= 0) {
-    printf("Number must be natural");
-    return -1;
-  }
-  
-  int* array = calloc(n, sizeof(int));
+  int max_sum = 0, cur_sum = 0; // maximum sum and current sum respectively
+  int *array = calloc(n, sizeof(int)); // creating an empty array
 
   for (int i = 0; i < n; i++) {
-    printf("%i) ", i+1);
-
-    if (!scanf("%i", &array[i])) {
-      printf("Number must be integer");
-      return -1;
-    }
-    
+    array[i] = rand(); // generating an integer value
+    printf("%i)\t%i\n", i + 1, array[i]);
     cur_sum = digit_sum(array[i]);
     if (cur_sum >= max_sum) {
       max_sum = cur_sum;
@@ -54,7 +43,23 @@ int main() {
       printf("%i\t", array[i]);
     }
   }
-  
+
   free(array);
+}
+
+// main function
+int main() {
+  printf("Enter a size of array: ");
+  int n;
+  if (!scanf("%i", &n)) {
+    printf("Number must be integer");
+  }
+  
+  if (n <= 0) {
+    printf("Number must be natural");
+    return -1;
+  }
+
+  max_digit_sum(n);
   return 0;
 }
