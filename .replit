@@ -1,8 +1,8 @@
 language = "c"
-run = "gcc -o labrabota3-1 /home/bjorn/lab3-task1-gr12-antonchenko/src/main.c"
-entrypoint = "main.c"
-hidden = ["main", "main-debug", "**/*.o", "**/*.d", ".ccls-cache", "Makefile"]
-compile = ["make", "-s"]
+run = "./task1"
+entrypoint = "task1.c"
+hidden = ["task1", "task1-debug", "/*.o", "/*.d", ".ccls-cache", "Makefile"]
+compile = "gcc -o task1 /home/runner/lab3-task1-gr12-antonchenko/src/task1.c"
 
 [languages]
 
