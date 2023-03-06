@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 int digit_sum(int arg) {
   if (arg <= 0) {
@@ -20,14 +21,27 @@ int digit_sum(int arg) {
 int main() {
   int n;
   int max_sum = 0, cur_sum = 0;
-  
   printf("Enter a size of array: ");
-  scanf("%i", &n);
+  if (!scanf("%i", &n)) {
+    printf("Number must be integer");
+    return -1;
+  }
+  
+  if (n <= 0) {
+    printf("Number must be natural");
+    return -1;
+  }
+  
   int* array = calloc(n, sizeof(int));
 
   for (int i = 0; i < n; i++) {
     printf("%i) ", i+1);
-    scanf("%i", &array[i]);
+
+    if (!scanf("%i", &array[i])) {
+      printf("Number must be integer");
+      return -1;
+    }
+    
     cur_sum = digit_sum(array[i]);
     if (cur_sum >= max_sum) {
       max_sum = cur_sum;
