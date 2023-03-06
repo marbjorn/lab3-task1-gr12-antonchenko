@@ -1,5 +1,5 @@
 language = "c"
-run = "gcc -o labrabota3-1 /home/runner/lab3-task1-gr13-petrov/src/main.c"
+run = "gcc -o labrabota3-1 /home/bjorn/lab3-task1-gr12-antonchenko/src/main.c"
 entrypoint = "main.c"
 hidden = ["main", "main-debug", "**/*.o", "**/*.d", ".ccls-cache", "Makefile"]
 compile = ["make", "-s"]

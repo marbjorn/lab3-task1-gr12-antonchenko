@@ -43,6 +43,9 @@ hello
 *.idb
 *.pdb
 
+#Binary file
+labrabota3-1
+
 # Kernel Module Compile Results
 *.mod*
 *.cmd
